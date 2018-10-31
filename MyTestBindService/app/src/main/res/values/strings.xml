@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyTestBindService</string>
+    <string name="bind_local_service">Bind Local Service</string>
+    <string name="bind_remote_service">Bind Remote Service</string>
+</resources>
