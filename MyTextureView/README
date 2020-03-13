@@ -1,0 +1,2 @@
+该应用是如何将TextureView显示在View上，并设置其显示的优先级等LayoutParams. 
+该应用本是用来进行Camera Preview的，但是Camera部分并未添加。

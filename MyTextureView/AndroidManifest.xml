@@ -1,0 +1,42 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.maureen.mytextureviewapp"
+	    android:sharedUserId="android.uid.system">
+    <!--add sharedUserId property  to add property runtime.arm2.log_save,
+        cause arm2_log service start earlier than backcar app,so the last logs have not beeen saved-->
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="28"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
+    <uses-permission android:name="android.permission.STATUS_BAR"/>
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <protected-broadcast android:name="android.intent.action.ARM2_BACKCAR_EXIT" />
+    <protected-broadcast android:name="android.backcar.action.PREPARE_START" />
+    <protected-broadcast android:name="android.backcar.action.FINISH" />
+
+    <application
+        android:label="MyTextureView"
+        android:persistent="true"
+        android:hasCode="true">
+
+        <activity android:name=".MyTextureViewActivity"
+                  android:launchMode="singleInstance"
+                  android:theme="@style/Theme.AppTheme2"
+                  android:excludeFromRecents="true"/>
+
+
+        <service android:name=".MyTextureService">
+            <intent-filter>
+                <action android:name="android.intent.action.TEXTURE_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
